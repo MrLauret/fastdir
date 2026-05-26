@@ -64,10 +64,7 @@ impl DirList {
     }
 
     pub fn delete(&mut self, name: &String) -> Result<(), &'static str> {
-        let index = match self.find_index(name) {
-            Ok(idx) => idx,
-            Err(e) => return Err(e)
-        };
+        let index = self.find_index(name)?;
 
         self.dirs.remove(index);
         self.save();
